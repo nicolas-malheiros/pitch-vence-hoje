@@ -1,10 +1,10 @@
 // Gera roteiro/Roteiro_VenceHoje.pdf a partir do pitch atual.
-// Lê as notas (NOTES) e o CONFIG de src/deck.html, as tabelas de VenceHoje_pitch_v2.md,
+// Lê as notas (NOTES) e o CONFIG de src/deck.html, as tabelas da especificação mais recente (VenceHoje_pitch_vN.md),
 // tira prints de cada slide/clique do index.html e imprime o PDF no Edge (headless).
 // Uso: node roteiro/gerar-roteiro.mjs        (rode `node build.mjs` antes se mudou o deck)
 //      node roteiro/gerar-roteiro.mjs --sem-prints   (reaproveita as imagens já geradas)
 import { spawn } from 'node:child_process';
-import { readFileSync, writeFileSync, mkdirSync, existsSync } from 'node:fs';
+import { readFileSync, writeFileSync, mkdirSync, existsSync, readdirSync } from 'node:fs';
 import { join, dirname } from 'node:path';
 import { fileURLToPath, pathToFileURL } from 'node:url';
 import { tmpdir } from 'node:os';
@@ -30,20 +30,29 @@ const CONFIG = new Function('return ' + grab('const CONFIG = {', '\n};'))();
 const NOTES = new Function('return ' + grab('const NOTES = [', '\n];'))();
 
 /* ---------- dados da especificação (.md) ---------- */
-const md = readFileSync(join(ROOT, 'VenceHoje_pitch_v2.md'), 'utf8');
+// usa a versão mais nova da especificação (v3, v4…)
+const specFile = readdirSync(ROOT).filter(n => /^VenceHoje_pitch_v\d+\.md$/.test(n))
+  .sort((a, b) => +a.match(/v(\d+)/)[1] - +b.match(/v(\d+)/)[1]).pop();
+const md = readFileSync(join(ROOT, specFile), 'utf8');
 const section = (title) => {
   const i = md.indexOf(title); if (i < 0) return '';
   const rest = md.slice(i + title.length);
   const j = rest.search(/\n## /);
   return j < 0 ? rest : rest.slice(0, j);
 };
-const table = (txt) => txt.split('\n').filter(l => l.trim().startsWith('|') && !/^\|\s*-/.test(l.trim()))
-  .map(l => l.trim().slice(1, -1).split('|').map(c => c.trim())).slice(1);
-const inline = (s) => esc(s).replace(/\*\*(.+?)\*\*/g, '<b>$1</b>').replace(/`(.+?)`/g, '<code>$1</code>');
+const tableAll = (txt) => txt.split('\n').filter(l => l.trim().startsWith('|') && !/^\|\s*-/.test(l.trim()))
+  .map(l => l.trim().slice(1, -1).split('|').map(c => c.trim()));
+const table = (txt) => tableAll(txt).slice(1);
+const keep = (h) => h.replace(/(\d+(?:[.,]\d+)?)\s?%/g, '<span class="nw">$1%</span>')
+  .replace(/R\$\s?(\d[\d.,]*)/g, '<span class="nw">R$$&nbsp;$1</span>');
+const inline = (s) => keep(esc(s).replace(/\*\*(.+?)\*\*/g, '<b>$1</b>').replace(/`(.+?)`/g, '<code>$1</code>'));
 const esc = (s) => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
 
 const timeline = table(section('## 2. Linha do tempo'));
-const papeis = table(section('## 3. Papéis'));
+const papeisAll = tableAll(section('## 3. Papéis'));
+const papeisHead = papeisAll[0] || [];
+const papeis = papeisAll.slice(1);
+const passagens = (section('## 2. Linha do tempo').match(/^Passagens de vez:.*$/m) || [''])[0];
 const perguntas = table(section('## 8. Perguntas prováveis da banca'));
 const planoB = section('## 7. Plano B').split('\n').filter(l => /^\d+\./.test(l)).map(l => l.replace(/^\d+\.\s*/, ''));
 
@@ -81,12 +90,15 @@ const cutInfo = {}; // B1..B5 -> texto do plano B
 planoB.forEach((t, i) => { cutInfo['B' + (i + 1)] = t; });
 const saving = (t) => (t.match(/\(([−-]\s*\d+\s*s)\)/) || [, ''])[1];
 
-const notesHtml = (h) => h.replace(/<span class="cut" data-cut="([^"]+)">/g, (_, c) => {
+const notesHtml = (h) => keepHtml(h).replace(/<span class="cut" data-cut="([^"]+)">/g, (_, c) => {
   const b = c.split(' ')[0];
   return `<span class="cut"><span class="cutlbl">Plano B · ${esc(b)}${saving(cutInfo[b] || '') ? ' (' + saving(cutInfo[b]) + ')' : ''}</span>`;
 });
 
 const quemSlide = (n) => esc(n.quem);
+function keepHtml(h) { // aplica keep() só no texto, fora das tags
+  return h.split(/(<[^>]+>)/).map(p => p.startsWith('<') ? p : keep(p)).join('');
+}
 const fontFace = ['inter', 'space-grotesk'].flatMap(f => [400, 600, 700].map(w =>
   `@font-face{font-family:'${f === 'inter' ? 'Inter' : 'Space Grotesk'}';font-weight:${w};src:url('../fonts/${f}-latin-${w}-normal.woff2') format('woff2');}`)).join('\n');
 
@@ -112,7 +124,7 @@ const slidePages = NOTES.map((n, i) => {
 const equipe = CONFIG.equipe.map(p => `${p.nome} ${p.sobrenome}`).join(' · ');
 const today = new Date().toLocaleDateString('pt-BR');
 const tl = timeline.map(r => `<tr>${r.map((c, j) => `<td${j === 0 ? ' class="b"' : ''}>${inline(c)}</td>`).join('')}</tr>`).join('');
-const pp = papeis.map(r => `<tr><td class="b">${inline(r[0])}</td><td class="blank"></td>${r.slice(1).map(c => `<td>${inline(c)}</td>`).join('')}</tr>`).join('');
+const pp = papeis.map(r => `<tr><td class="b">${inline(r[0])}</td>${r.slice(1).map(c => `<td>${inline(c)}</td>`).join('')}</tr>`).join('');
 
 const cfg = CONFIG;
 const html = `<!doctype html><html lang="pt-BR"><head><meta charset="utf-8"><title>Roteiro · VenceHoje</title>
@@ -141,7 +153,7 @@ table{width:100%;border-collapse:collapse;font-size:9pt}
 th,td{text-align:left;padding:1.8mm 2.2mm;border-bottom:1px solid var(--linha);vertical-align:top}
 th{font-weight:600;color:var(--cinza);font-size:8pt;text-transform:uppercase;letter-spacing:.04em;border-bottom:1.5px solid var(--verde)}
 td.b{font-weight:600;white-space:nowrap}
-td.blank{min-width:30mm;border-bottom:1px solid var(--tinta)}
+.nw{white-space:nowrap}
 .note{font-size:8.6pt;color:var(--cinza);margin:2mm 0 0}
 /* operação */
 .grid2{display:grid;grid-template-columns:1fr 1fr;gap:6mm}
@@ -196,14 +208,17 @@ ol.pb li{margin:1.4mm 0}
 
   <h3>Linha do tempo</h3>
   <table><thead><tr><th>Bloco</th><th>Tempo</th><th>Duração</th><th>Quem fala</th><th>Slides</th><th>Etiqueta ao entrar</th></tr></thead><tbody>${tl}</tbody></table>
+  ${passagens ? `<p class="note">${inline(passagens)}</p>` : ''}
 
-  <h3>Papéis</h3>
-  <table><thead><tr><th>Pessoa</th><th>Nome</th><th>Na cena</th><th>Apresenta</th><th>Adereço</th></tr></thead><tbody>${pp}</tbody></table>
-  <p class="note">A coluna Nome está em branco porque os papéis ainda não foram distribuídos. Preencha à mão.</p>
 </section>
 
 <section class="page">
-  <h3>Como passar os slides (P5)</h3>
+  <h3>Papéis</h3>
+  <table class="papeis"><thead><tr>${papeisHead.map(h => `<th>${esc(h)}</th>`).join('')}</tr></thead><tbody>${pp}</tbody></table>
+</section>
+
+<section class="page">
+  <h3>Como passar os slides (Lucas)</h3>
   <div class="grid2">
     <div class="card"><h4>Teclas</h4><ul>
       <li><kbd>→</kbd> <kbd>Espaço</kbd> <kbd>PageDown</kbd> ou clique esquerdo: avança (inclusive os cliques internos)</li>
@@ -220,17 +235,17 @@ ol.pb li{margin:1.4mm 0}
     </ul></div>
     <div class="card"><h4>Antes de subir ao palco</h4><ol>
       <li>Abra o <b>index.html</b> local (funciona sem internet). Reserva: pitch-vence-hoje.vercel.app</li>
-      <li>Se o PC estiver com as animações do Windows desligadas, coloque <code>movimento: "completo"</code> no CONFIG ou ative os efeitos de animação.</li>
+      <li>As animações rodam sempre, mesmo com as animações do Windows desligadas (<code>movimento: "completo"</code> no CONFIG).</li>
       <li>Aperte <kbd>F</kbd> (tela cheia) e confira o S1 parado em 19:58.</li>
       <li>Se usar notas, aperte <kbd>N</kbd> e arraste a janela para o notebook.</li>
       <li>Teste o passador: ele deve mandar <kbd>→</kbd>/<kbd>←</kbd> ou PageDown/PageUp.</li>
-      <li>Adereços: avental, pão com etiqueta, placa “LIXO”, celulares.</li>
+      <li>Adereços: boné do Nicolas, pacote de arroz 1kg com etiqueta vermelha “VENCE HOJE” e o celular dele no bolso; saco de lixo preto aberto para o Antônio; celular do João. Não precisa de balcão: a cena é de pé, na frente do telão.</li>
     </ol></div>
     <div class="card"><h4>Como ler este roteiro</h4>
       <div class="legend">
-        <span><span class="who">P4</span> quem fala</span>
+        <span><span class="who">Felipe</span> quem fala</span>
         <span><span class="act">[ação em cena]</span></span>
-        <span><span class="click">CLIQUE</span> P5 avança</span>
+        <span><span class="click">CLIQUE</span> Lucas avança</span>
       </div>
       <p style="margin:3mm 0 0"><span class="cut"><span class="cutlbl">Plano B · B1</span>trecho que pode ser cortado</span>: se o ensaio passar de 3:00, corte nesta ordem (B1 → B5).</p>
       <p class="note">Os prints mostram a tela em cada momento. A etiqueta aparece em 2:50 porque foi capturada parada; no pitch ela corre.</p>
@@ -254,7 +269,7 @@ ${slidePages}
     <div class="num"><b>${esc(cfg.receita.premiumValor + cfg.receita.premiumPeriodo)}</b><span>${esc(cfg.receita.premiumNome)}: ${esc(cfg.receita.premiumItens.join(' + '))}</span></div>
     <div class="num"><b>R$ 125</b><span>ticket médio por loja/mês = R$ 135 mi ÷ 90 mil ÷ 12</span></div>
     <div class="num"><b>200 × 125 × 12</b><span>= R$ 300 mil/ano (conta do SOM)</span></div>
-    <div class="num"><b>Joinville</b><span>área inicial: padarias, hortifrútis, mercados de bairro</span></div>
+    <div class="num"><b>Joinville</b><span>área inicial: mercados de bairro, hortifrútis, padarias</span></div>
   </div>
   <p class="note">Pesquisa · lojistas: ${cfg.pesquisa.lojistas.map(x => `${x.pct}% ${esc(x.rotulo)}`).join(' · ')}. Consumidores: ${cfg.pesquisa.consumidores.map(x => `${x.pct}% ${esc(x.rotulo)}`).join(' · ')}. Não citar o número de entrevistados.</p>
 </section>
@@ -292,6 +307,8 @@ writeFileSync(htmlPath, html);
     console.log('PDF gerado:', out);
   } finally { p.kill(); }
 }
+
+process.exit(0); // o Edge às vezes segura a conexão aberta
 
 /* ---------- util ---------- */
 function sleep(ms) { return new Promise(r => setTimeout(r, ms)); }

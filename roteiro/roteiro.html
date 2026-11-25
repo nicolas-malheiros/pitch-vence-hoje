@@ -29,7 +29,7 @@ table{width:100%;border-collapse:collapse;font-size:9pt}
 th,td{text-align:left;padding:1.8mm 2.2mm;border-bottom:1px solid var(--linha);vertical-align:top}
 th{font-weight:600;color:var(--cinza);font-size:8pt;text-transform:uppercase;letter-spacing:.04em;border-bottom:1.5px solid var(--verde)}
 td.b{font-weight:600;white-space:nowrap}
-td.blank{min-width:30mm;border-bottom:1px solid var(--tinta)}
+.nw{white-space:nowrap}
 .note{font-size:8.6pt;color:var(--cinza);margin:2mm 0 0}
 /* operação */
 .grid2{display:grid;grid-template-columns:1fr 1fr;gap:6mm}
@@ -74,7 +74,7 @@ ol.pb li{margin:1.4mm 0}
     <div class="tag">VENCE EM 2:50</div>
     <p style="font-weight:600;color:var(--lima);letter-spacing:.06em;text-transform:uppercase;font-size:8.5pt;margin-bottom:3mm">Roteiro do apresentador</p>
     <h1>Vence<em>Hoje</em><br>Pitch de 3 minutos</h1>
-    <p>Antônio Budal · Nicolas Malheiros · Lucas Santos · João Penna · Felipe [SOBRENOME]</p>
+    <p>Antônio Budal · Nicolas Malheiros · Lucas Santos · João Penna · Felipe Miguel</p>
     <div class="facts">
       <div><b>2:50</b><span>tempo-alvo (10 s de folga)</span></div>
       <div><b>9 slides</b><span>S3, S8 e S9 têm cliques internos</span></div>
@@ -83,15 +83,18 @@ ol.pb li{margin:1.4mm 0}
   </div>
 
   <h3>Linha do tempo</h3>
-  <table><thead><tr><th>Bloco</th><th>Tempo</th><th>Duração</th><th>Quem fala</th><th>Slides</th><th>Etiqueta ao entrar</th></tr></thead><tbody><tr><td class="b">1. Problema (encenação)</td><td>0:00–0:35</td><td>35 s</td><td>P1, P2, P3 atuam · P4 narra</td><td>S1 (0:00), S2 (0:15)</td><td>2:50 · 2:35</td></tr><tr><td class="b">2. Solução + app + área</td><td>0:35–1:10</td><td>35 s</td><td>P4 narra · P1, P2, P3 atuam</td><td>S3 (0:35), S4 (0:58)</td><td>2:15 · 1:52</td></tr><tr><td class="b">3. Pesquisa</td><td>1:10–1:35</td><td>25 s</td><td>P2</td><td>S5</td><td>1:40</td></tr><tr><td class="b">4. Benchmark</td><td>1:35–1:55</td><td>20 s</td><td>P5</td><td>S6</td><td>1:15</td></tr><tr><td class="b">5. Fonte de receita</td><td>1:55–2:15</td><td>20 s</td><td>P1</td><td>S7</td><td>0:55</td></tr><tr><td class="b">6. TAM/SAM/SOM</td><td>2:15–2:35</td><td>20 s</td><td>P3</td><td>S8</td><td>0:35</td></tr><tr><td class="b">7. Conclusão</td><td>2:35–2:50</td><td>15 s</td><td>P5 + todos</td><td>S9</td><td>0:15</td></tr></tbody></table>
+  <table><thead><tr><th>Bloco</th><th>Tempo</th><th>Duração</th><th>Quem fala</th><th>Slides</th><th>Etiqueta ao entrar</th></tr></thead><tbody><tr><td class="b">1. Problema (cena + narração)</td><td>0:00–0:35</td><td>35 s</td><td>Felipe abre · Nicolas, Antônio e João atuam · Felipe narra</td><td>S1 (0:00), S2 (0:20)</td><td>2:50 · 2:30</td></tr><tr><td class="b">2. Solução + app + área</td><td>0:35–1:10</td><td>35 s</td><td>Só Felipe fala · os outros em mímica</td><td>S3 (0:35), S4 (0:58)</td><td>2:15 · 1:52</td></tr><tr><td class="b">3. Pesquisa</td><td>1:10–1:35</td><td>25 s</td><td>João</td><td>S5</td><td>1:40</td></tr><tr><td class="b">4. Benchmark</td><td>1:35–1:55</td><td>20 s</td><td>Lucas</td><td>S6</td><td>1:15</td></tr><tr><td class="b">5. Fonte de receita</td><td>1:55–2:15</td><td>20 s</td><td>Nicolas</td><td>S7</td><td>0:55</td></tr><tr><td class="b">6. TAM/SAM/SOM</td><td>2:15–2:35</td><td>20 s</td><td>Nicolas</td><td>S8</td><td>0:35</td></tr><tr><td class="b">7. Conclusão</td><td>2:35–2:50</td><td>15 s</td><td>Felipe + todos</td><td>S9</td><td>0:15</td></tr></tbody></table>
+  <p class="note">Passagens de vez: Felipe → João (fim do S4, "O João foi perguntar") → Lucas (fim do S5, João vira para ele) → Nicolas (fim do S6, Lucas vira para ele) → Nicolas segue no S8 → Felipe (S9). O Lucas passa os slides o tempo todo, inclusive quando ele mesmo apresenta.</p>
 
-  <h3>Papéis</h3>
-  <table><thead><tr><th>Pessoa</th><th>Nome</th><th>Na cena</th><th>Apresenta</th><th>Adereço</th></tr></thead><tbody><tr><td class="b">P1</td><td class="blank"></td><td>Seu Zé, dono da Padaria da Esquina</td><td>Fonte de receita</td><td>avental ou boné, pão com etiqueta "R$ 8,99 · VENCE HOJE", celular</td></tr><tr><td class="b">P2</td><td class="blank"></td><td>Ana, a cliente</td><td>Pesquisa</td><td>celular</td></tr><tr><td class="b">P3</td><td class="blank"></td><td>A Lixeira</td><td>TAM/SAM/SOM</td><td>placa "LIXO" no pescoço ou saco de lixo preto</td></tr><tr><td class="b">P4</td><td class="blank"></td><td>Narrador</td><td>Problema e solução</td><td>—</td></tr><tr><td class="b">P5</td><td class="blank"></td><td>Passa os slides na cena</td><td>Benchmark e conclusão</td><td>passador de slides</td></tr></tbody></table>
-  <p class="note">A coluna Nome está em branco porque os papéis ainda não foram distribuídos. Preencha à mão.</p>
 </section>
 
 <section class="page">
-  <h3>Como passar os slides (P5)</h3>
+  <h3>Papéis</h3>
+  <table class="papeis"><thead><tr><th>Pessoa</th><th>Na cena</th><th>Apresenta</th><th>Falas na cena</th><th>Adereço</th></tr></thead><tbody><tr><td class="b">Felipe Miguel</td><td>Narrador</td><td>Problema (S2), Solução/App/Área (S3–S4) e Conclusão (S9)</td><td>abre a cena no S1, narra o S2 e todo o S3</td><td>—</td></tr><tr><td class="b">Antônio Budal</td><td>A Lixeira</td><td>não apresenta slide</td><td>1 fala curta no S1, mímica no S3, reação no S9 e a frase final em coro</td><td>saco de lixo preto aberto nas mãos</td></tr><tr><td class="b">Lucas Santos</td><td>Passa os slides</td><td>Benchmark (S6)</td><td>nenhuma; aperta T no início e dá todos os cliques</td><td>passador de slides</td></tr><tr><td class="b">João Penna</td><td>Pedro, o cliente</td><td>Pesquisa (S5)</td><td>1 fala curta no S1, mímica no S3</td><td>celular</td></tr><tr><td class="b">Nicolas Malheiros</td><td>Seu Zé, dono do mercadinho</td><td>Fonte de receita (S7) e TAM/SAM/SOM (S8)</td><td>1 fala curta no S1, mímica no S3</td><td>boné, pacote de arroz 1kg com etiqueta vermelha "VENCE HOJE", celular no bolso</td></tr></tbody></table>
+</section>
+
+<section class="page">
+  <h3>Como passar os slides (Lucas)</h3>
   <div class="grid2">
     <div class="card"><h4>Teclas</h4><ul>
       <li><kbd>→</kbd> <kbd>Espaço</kbd> <kbd>PageDown</kbd> ou clique esquerdo: avança (inclusive os cliques internos)</li>
@@ -108,17 +111,17 @@ ol.pb li{margin:1.4mm 0}
     </ul></div>
     <div class="card"><h4>Antes de subir ao palco</h4><ol>
       <li>Abra o <b>index.html</b> local (funciona sem internet). Reserva: pitch-vence-hoje.vercel.app</li>
-      <li>Se o PC estiver com as animações do Windows desligadas, coloque <code>movimento: "completo"</code> no CONFIG ou ative os efeitos de animação.</li>
+      <li>As animações rodam sempre, mesmo com as animações do Windows desligadas (<code>movimento: "completo"</code> no CONFIG).</li>
       <li>Aperte <kbd>F</kbd> (tela cheia) e confira o S1 parado em 19:58.</li>
       <li>Se usar notas, aperte <kbd>N</kbd> e arraste a janela para o notebook.</li>
       <li>Teste o passador: ele deve mandar <kbd>→</kbd>/<kbd>←</kbd> ou PageDown/PageUp.</li>
-      <li>Adereços: avental, pão com etiqueta, placa “LIXO”, celulares.</li>
+      <li>Adereços: boné do Nicolas, pacote de arroz 1kg com etiqueta vermelha “VENCE HOJE” e o celular dele no bolso; saco de lixo preto aberto para o Antônio; celular do João. Não precisa de balcão: a cena é de pé, na frente do telão.</li>
     </ol></div>
     <div class="card"><h4>Como ler este roteiro</h4>
       <div class="legend">
-        <span><span class="who">P4</span> quem fala</span>
+        <span><span class="who">Felipe</span> quem fala</span>
         <span><span class="act">[ação em cena]</span></span>
-        <span><span class="click">CLIQUE</span> P5 avança</span>
+        <span><span class="click">CLIQUE</span> Lucas avança</span>
       </div>
       <p style="margin:3mm 0 0"><span class="cut"><span class="cutlbl">Plano B · B1</span>trecho que pode ser cortado</span>: se o ensaio passar de 3:00, corte nesta ordem (B1 → B5).</p>
       <p class="note">Os prints mostram a tela em cada momento. A etiqueta aparece em 2:50 porque foi capturada parada; no pitch ela corre.</p>
@@ -126,53 +129,53 @@ ol.pb li{margin:1.4mm 0}
   </div>
 </section>
 
-<section class="page slide-page"><header class="sh"><span class="sn">S1</span><h2>Cena: Padaria da Esquina</h2>
-    <div class="meta"><span><i>Tempo</i>0:00–0:15</span><span><i>Quem</i>P1, P2, P3 atuam</span><span class="etq"><i>Etiqueta ao entrar</i>2:50</span></div></header><img class="big" src="img/s1_0.jpg" alt="">
-      <div class="segs"><p><span class="act">[P1 atrás da mesa segurando o pão com a etiqueta. P3, a Lixeira, ao lado, esfregando as mãos. <b>P5 aperta T</b> para iniciar a etiqueta. P2 entra mexendo no celular.]</span></p><p><span class="who">P2 (Ana)</span> <span class="act">[olha a etiqueta, faz careta]</span>: “Quase nove reais num pão? Hoje não, Seu Zé.” <span class="act">[sai]</span></p><p><span class="who">P1 (Seu Zé)</span> <span class="act">[olha o relógio, suspira]</span>: “Oito da noite… vence hoje mesmo.” <span class="act">[estende o pão para a Lixeira]</span></p><p><span class="who">P3 (Lixeira)</span> <span class="act">[pega o pão, animada]</span>: “Hmm, esse ainda tava bom, hein? Valeu, Seu Zé! Com esse, já são trezentos reais seus só esse mês.”</p><p><span class="act">[0:15 — todos congelam. P4 entra na frente da cena.]</span> <span class="click">CLIQUE → S2</span></p></div></section>
+<section class="page slide-page"><header class="sh"><span class="sn">S1</span><h2>Cena: Mercadinho da Esquina</h2>
+    <div class="meta"><span><i>Tempo</i>0:00–0:20</span><span><i>Quem</i>Felipe abre · Nicolas, Antônio e João atuam · Lucas passa</span><span class="etq"><i>Etiqueta ao entrar</i>2:50</span></div></header><img class="big" src="img/s1_0.jpg" alt="">
+      <div class="segs"><p><span class="act">[<b>Lucas aperta T</b> para iniciar a etiqueta. Os quatro já estão de pé na frente do telão: Nicolas segurando o arroz, Antônio ao lado com o saco de lixo preto aberto, João um pouco ao lado e Felipe à frente para apresentar.]</span></p><p><span class="who">Felipe</span> <span class="act">[apontando para cada um]</span>: “Oito da noite no mercadinho da esquina: o Seu Zé, dono da loja… o lixo… e o Pedro, cliente do bairro.”</p><p><span class="who">Nicolas (Seu Zé)</span> <span class="act">[olha a validade e o relógio]</span>: “Vence hoje e eu só vi agora, fechando! Não dá mais tempo de vender.” <span class="act">[solta o arroz dentro do saco do Antônio]</span></p><p><span class="who">Antônio (Lixeira)</span> <span class="act">[animado, segurando o saco]</span>: “Valeu, Seu Zé! Mais um pro lixo!”</p><p><span class="who">João (Pedro)</span> <span class="act">[olha indignado para o saco de lixo]</span>: “Pô, Seu Zé, comida boa no lixo?! Se eu soubesse com <span class="nw">60%</span> de desconto, eu levava na hora!”</p><p><span class="act">[0:20 — todos congelam. Felipe dá um passo à frente.]</span> <span class="click">CLIQUE → S2</span></p></div></section>
 <section class="page slide-page"><header class="sh"><span class="sn">S2</span><h2>Quem ganhou foi o lixo</h2>
-    <div class="meta"><span><i>Tempo</i>0:15–0:35</span><span><i>Quem</i>P4 narra</span><span class="etq"><i>Etiqueta ao entrar</i>2:35</span></div></header><img class="big" src="img/s2_0.jpg" alt="">
-      <div class="segs"><p><span class="who">P4 (narrador)</span>: “Repararam? O pão ainda estava bom. O Seu Zé perdeu dinheiro. A Ana perdeu a chance de pagar menos. Quem ganhou foi… o lixo.” <span class="act">[P3 acena, orgulhosa]</span></p><p><span class="who">P4</span>: “E isso não acontece só na Padaria da Esquina: o Brasil desperdiça cerca de 20 milhões de toneladas de alimento por ano.”</p><p><span class="who">P4</span>: “Então vamos voltar duas horas.” <span class="click">CLIQUE → S3</span> <span class="act">(rebobina sozinho 19:58 → 17:58)</span></p></div></section>
+    <div class="meta"><span><i>Tempo</i>0:20–0:35</span><span><i>Quem</i>Felipe</span><span class="etq"><i>Etiqueta ao entrar</i>2:30</span></div></header><img class="big" src="img/s2_0.jpg" alt="">
+      <div class="segs"><p><span class="who">Felipe</span>: “Repararam? O arroz estava ótimo. <span class="cut"><span class="cutlbl">Plano B · B1 (−4 s)</span>O Seu Zé perdeu dinheiro, o Pedro perdeu <span class="nw">60%</span> de desconto…</span> e quem ganhou foi o lixo.” <span class="act">[Antônio acena, orgulhoso]</span></p><p><span class="who">Felipe</span>: “E o Brasil joga fora cerca de 20 milhões de toneladas de comida por ano.”</p><p><span class="who">Felipe</span>: “Agora vamos voltar duas horas.” <span class="click">CLIQUE → S3</span> <span class="act">(o relógio rebobina sozinho 19:58 → 17:58)</span></p></div></section>
 <section class="page slide-page"><header class="sh"><span class="sn">S3</span><h2>Rebobinar + amostra do app</h2>
-    <div class="meta"><span><i>Tempo</i>0:35–0:58</span><span><i>Quem</i>P4 narra · P1, P2, P3 atuam</span><span class="etq"><i>Etiqueta ao entrar</i>2:15</span></div></header><div class="step">
+    <div class="meta"><span><i>Tempo</i>0:35–0:58</span><span><i>Quem</i>Só Felipe fala · Nicolas, João e Antônio em mímica</span><span class="etq"><i>Etiqueta ao entrar</i>2:15</span></div></header><div class="step">
         <figure><img src="img/s3_0.jpg" alt=""><figcaption>Ao entrar</figcaption></figure>
-        <div class="segs"><p><span class="act">[Os três fazem a cena de trás para frente em 3 s: a Lixeira devolve o pão, a Ana volta de costas.]</span></p><p><span class="who">P1 (Seu Zé)</span> <span class="act">[digita no celular]</span>: “Pão integral, de 8,99 por 6,29, vence hoje… publicado.” <span class="click">CLIQUE 1</span> <span class="act">(“Publicado!” + notificação no celular da cliente)</span></p></div>
+        <div class="segs"><p><span class="act">[No rebobinar, Antônio devolve o arroz do saco para o Nicolas e os três voltam às posições, em silêncio. Daqui até o fim do S3, só o Felipe fala.]</span></p><p><span class="who">Felipe</span>: “Olha como muda: o Seu Zé vê que vence hoje e publica com <span class="nw">60%</span> de desconto em segundos.” <span class="act">[Nicolas digita no celular]</span> <span class="click">CLIQUE 1</span> <span class="act">(“Publicado!” + notificação no celular do Pedro)</span></p></div>
       </div><div class="step">
         <figure><img src="img/s3_1.jpg" alt=""><figcaption>Depois do clique 1</figcaption></figure>
-        <div class="segs"><p><span class="who">P2 (Ana)</span> <span class="act">[o celular vibra]</span>: “Pão integral a 400 metros, 30% mais barato? Reservado!” <span class="click">CLIQUE 2</span> <span class="act">(tela de reserva com QR Code)</span></p></div>
+        <div class="segs"><p><span class="who">Felipe</span>: “Na hora, o alerta chega no celular do Pedro: de 7,99 por 3,19. Ele reserva com um toque.” <span class="act">[João olha o celular e sorri]</span> <span class="click">CLIQUE 2</span> <span class="act">(tela de reserva com QR Code)</span></p></div>
       </div><div class="step">
         <figure><img src="img/s3_2.jpg" alt=""><figcaption>Depois do clique 2</figcaption></figure>
-        <div class="segs"><p><span class="act">[Ana vai até o Seu Zé, mostra o celular, paga, os dois sorriem]</span><br><span class="who">P3 (Lixeira)</span> <span class="act">[sai de cena, desolada]</span>: <span class="cut"><span class="cutlbl">Plano B · B1 (−2 s)</span>“É… hoje eu janto vento.”</span><br><span class="who">P4</span>: “Isso é o VenceHoje.” <span class="click">CLIQUE 3</span> <span class="act">(marca VenceHoje)</span></p></div>
+        <div class="segs"><p><span class="who">Felipe</span>: “Passa no mercadinho, paga no balcão… e o lixo fica sem nada.” <span class="act">[João mostra o celular, Nicolas entrega o arroz. Antônio olha o saco vazio e sai de lado, desolado.]</span> <span class="click">CLIQUE 3</span> <span class="act">(marca VenceHoje)</span></p></div>
       </div><div class="step">
         <figure><img src="img/s3_3.jpg" alt=""><figcaption>Depois do clique 3</figcaption></figure>
-        <div class="segs"><p><span class="who">P4</span>: “A loja publica em segundos, o app mostra as ofertas perto de você, o cliente reserva e paga na retirada. Venceu? O anúncio sai sozinho.” <span class="click">CLIQUE → S4</span></p></div>
+        <div class="segs"><p><span class="who">Felipe</span>: “Isso é o VenceHoje. Venceu? O anúncio sai sozinho.” <span class="click">CLIQUE → S4</span></p></div>
       </div></section>
 <section class="page slide-page"><header class="sh"><span class="sn">S4</span><h2>Como funciona + área</h2>
-    <div class="meta"><span><i>Tempo</i>0:58–1:10</span><span><i>Quem</i>P4 narra</span><span class="etq"><i>Etiqueta ao entrar</i>1:52</span></div></header><img class="big" src="img/s4_0.jpg" alt="">
-      <div class="segs"><p><span class="who">P4</span>: “Começamos por Joinville: padarias, hortifrútis e mercados de bairro. Mas será que as pessoas querem isso mesmo?” <span class="click">CLIQUE → S5</span></p></div></section>
+    <div class="meta"><span><i>Tempo</i>0:58–1:10</span><span><i>Quem</i>Felipe</span><span class="etq"><i>Etiqueta ao entrar</i>1:52</span></div></header><img class="big" src="img/s4_0.jpg" alt="">
+      <div class="segs"><p><span class="who">Felipe</span>: “A gente começa por Joinville: mercados de bairro, hortifrútis e padarias. Mas será que as pessoas querem isso? O João foi perguntar.” <span class="click">CLIQUE → S5</span></p></div></section>
 <section class="page slide-page"><header class="sh"><span class="sn">S5</span><h2>A gente perguntou</h2>
-    <div class="meta"><span><i>Tempo</i>1:10–1:35</span><span><i>Quem</i>P2</span><span class="etq"><i>Etiqueta ao entrar</i>1:40</span></div></header><img class="big" src="img/s5_0.jpg" alt="">
-      <div class="segs"><p><span class="who">P2</span> <span class="act">[saindo da personagem]</span>: “A gente foi perguntar, numa pesquisa com lojistas e consumidores locais. 80% dos lojistas perdem 300 reais ou mais por mês com vencimento, <span class="cut"><span class="cutlbl">Plano B · B2 (−4 s)</span>e 67% pagariam por uma solução</span>. 73% dos consumidores já compraram por desconto de validade. E 53% nunca ouviram falar de nada parecido.”</p><p><span class="who">P2</span> <span class="act">[transição]</span>: “Mas será que ninguém faz isso?” <span class="click">CLIQUE → S6</span></p></div></section>
+    <div class="meta"><span><i>Tempo</i>1:10–1:35</span><span><i>Quem</i>João</span><span class="etq"><i>Etiqueta ao entrar</i>1:40</span></div></header><img class="big" src="img/s5_0.jpg" alt="">
+      <div class="segs"><p><span class="who">João</span> <span class="act">[saindo do personagem]</span>: “A gente foi perguntar. Entre os lojistas, <span class="nw">80%</span> perdem 300 reais ou mais por mês com produto vencendo<span class="cut"><span class="cutlbl">Plano B · B2 (−3 s)</span>, e <span class="nw">67%</span> pagariam por uma solução</span>.”</p><p><span class="who">João</span>: “Entre os consumidores, <span class="nw">73%</span> já compraram por desconto de validade. E <span class="nw">53%</span> nunca viram nada parecido.”</p><p><span class="who">João</span> <span class="act">[vira para o Lucas]</span>: “Mas ninguém faz isso?” <span class="click">CLIQUE → S6</span></p></div></section>
 <section class="page slide-page"><header class="sh"><span class="sn">S6</span><h2>Benchmark</h2>
-    <div class="meta"><span><i>Tempo</i>1:35–1:55</span><span><i>Quem</i>P5</span><span class="etq"><i>Etiqueta ao entrar</i>1:15</span></div></header><img class="big" src="img/s6_0.jpg" alt="">
-      <div class="segs"><p><span class="who">P5</span>: “Faz, mas diferente. A Food To Save vende sacola surpresa: você paga sem saber o que vem. E 76% dos lojistas ainda usam a plaquinha no balcão, que só vê quem já entrou. No VenceHoje, você vê produto, preço e validade antes de sair de casa.”</p><p><span class="who">P5</span> <span class="act">[transição, apontando para P1]</span>: “E como isso dá dinheiro, Seu Zé?” <span class="click">CLIQUE → S7</span></p></div></section>
+    <div class="meta"><span><i>Tempo</i>1:35–1:55</span><span><i>Quem</i>Lucas</span><span class="etq"><i>Etiqueta ao entrar</i>1:15</span></div></header><img class="big" src="img/s6_0.jpg" alt="">
+      <div class="segs"><p><span class="who">Lucas</span>: “Faz, mas diferente. A Food To Save vende sacola surpresa.<span class="cut"><span class="cutlbl">Plano B · B4 (−2 s)</span> Você paga sem saber o que vem.</span>”</p><p><span class="who">Lucas</span>: “E <span class="nw">76%</span> dos lojistas ainda usam plaquinha no balcão. No VenceHoje, você vê produto, preço e validade antes de sair de casa.”</p><p><span class="who">Lucas</span> <span class="act">[vira para o Nicolas]</span>: “E como isso dá dinheiro?” <span class="click">CLIQUE → S7</span></p></div></section>
 <section class="page slide-page"><header class="sh"><span class="sn">S7</span><h2>Fonte de receita</h2>
-    <div class="meta"><span><i>Tempo</i>1:55–2:15</span><span><i>Quem</i>P1</span><span class="etq"><i>Etiqueta ao entrar</i>0:55</span></div></header><img class="big" src="img/s7_0.jpg" alt="">
-      <div class="segs"><p><span class="who">P1</span> <span class="act">[ainda de avental]</span>: “Quase metade dos lojistas pediu comissão, então é assim: eu só pago quando vendo. O cliente paga aqui no balcão, eu escaneio o QR Code da reserva e o VenceHoje fica com 15%, numa fatura no fim do mês. <span class="cut"><span class="cutlbl">Plano B · B3 (−5 s)</span>Quem quer destaque e relatórios assina o Premium, por 79 reais por mês.</span>”</p><p><span class="who">P1</span> <span class="act">[transição, para P3]</span>: “E o tamanho do mercado? Pergunta pra especialista em desperdício.” <span class="click">CLIQUE → S8</span></p></div></section>
+    <div class="meta"><span><i>Tempo</i>1:55–2:15</span><span><i>Quem</i>Nicolas</span><span class="etq"><i>Etiqueta ao entrar</i>0:55</span></div></header><img class="big" src="img/s7_0.jpg" alt="">
+      <div class="segs"><p><span class="who">Nicolas</span>: “Quase metade dos lojistas pediu comissão: o lojista só paga quando vende.”</p><p><span class="who">Nicolas</span>: “O cliente paga no balcão, o lojista escaneia o QR Code e o VenceHoje fica com <span class="nw">15%</span>, numa fatura mensal.<span class="cut"><span class="cutlbl">Plano B · B3 (−5 s)</span> Quem quer destaque e relatórios assina o Premium, por 79 reais por mês.</span>”</p><p><span class="who">Nicolas</span>: “E o tamanho desse mercado?” <span class="click">CLIQUE → S8</span> <span class="act">(Nicolas continua)</span></p></div></section>
 <section class="page slide-page"><header class="sh"><span class="sn">S8</span><h2>TAM / SAM / SOM</h2>
-    <div class="meta"><span><i>Tempo</i>2:15–2:35</span><span><i>Quem</i>P3</span><span class="etq"><i>Etiqueta ao entrar</i>0:35</span></div></header><div class="step">
+    <div class="meta"><span><i>Tempo</i>2:15–2:35</span><span><i>Quem</i>Nicolas</span><span class="etq"><i>Etiqueta ao entrar</i>0:35</span></div></header><div class="step">
         <figure><img src="img/s8_0.jpg" alt=""><figcaption>Ao entrar</figcaption></figure>
-        <div class="segs"><p><span class="who">P3</span> <span class="act">[tira a placa de lixo]</span>: <span class="cut"><span class="cutlbl">Plano B · B4 (−3 s)</span>“Agora que fiquei sem comida, vamos falar de mercado.”</span> “O varejo alimentar movimenta 1,1 trilhão de reais por ano no Brasil.” <span class="click">CLIQUE 1 · SAM</span></p></div>
+        <div class="segs"><p><span class="who">Nicolas</span>: “O varejo de alimentos movimenta 1,1 trilhão de reais por ano no Brasil.” <span class="click">CLIQUE 1 · SAM</span></p></div>
       </div><div class="step">
         <figure><img src="img/s8_1.jpg" alt=""><figcaption>Depois do clique 1</figcaption></figure>
-        <div class="segs"><p>“Nosso mercado endereçável: 90 mil pequenos negócios urbanos no Sul e Sudeste, 135 milhões por ano.” <span class="click">CLIQUE 2 · SOM</span></p></div>
+        <div class="segs"><p><span class="who">Nicolas</span>: “Nosso alvo: 90 mil pequenos negócios no Sul e no Sudeste, 135 milhões por ano.” <span class="click">CLIQUE 2 · SOM</span></p></div>
       </div><div class="step">
         <figure><img src="img/s8_2.jpg" alt=""><figcaption>Depois do clique 2</figcaption></figure>
-        <div class="segs"><p>“E a meta para os dois primeiros anos: 200 lojas parceiras, começando por Joinville, 300 mil reais por ano.” <span class="click">CLIQUE → S9</span></p></div>
+        <div class="segs"><p><span class="who">Nicolas</span>: “Em dois anos, a meta é chegar a 200 lojas parceiras: 300 mil reais por ano.” <span class="click">CLIQUE → S9</span></p></div>
       </div></section>
 <section class="page slide-page"><header class="sh"><span class="sn">S9</span><h2>Fechamento</h2>
-    <div class="meta"><span><i>Tempo</i>2:35–2:50</span><span><i>Quem</i>P5 + todos</span><span class="etq"><i>Etiqueta ao entrar</i>0:15</span></div></header><div class="step">
+    <div class="meta"><span><i>Tempo</i>2:35–2:50</span><span><i>Quem</i>Felipe + todos</span><span class="etq"><i>Etiqueta ao entrar</i>0:15</span></div></header><div class="step">
         <figure><img src="img/s9_0.jpg" alt=""><figcaption>Ao entrar</figcaption></figure>
-        <div class="segs"><p><span class="act">[A etiqueta vai ao centro, ajustada para 0:15. Os cinco se alinham lado a lado.]</span></p><p><span class="who">P5</span>: <span class="cut"><span class="cutlbl">Plano B · B5 (−6 s)</span>“Todo dia, comida boa vira lixo às oito da noite. Com o VenceHoje, o Seu Zé recupera dinheiro, a Ana economiza e a Lixeira passa fome.” <span class="act">[P3 faz cara de choro]</span></span></p><p><span class="who">P5</span> <span class="act">[olhando para a banca]</span>: “Banca, comida tem prazo de validade. Essa oportunidade também.” <span class="click">CLIQUE FINAL</span> <span class="act">(etiqueta vai a 0:00 e carimba “VENCE HOJE”)</span></p></div>
+        <div class="segs"><p><span class="act">[A etiqueta vai ao centro, ajustada para 0:15. Os cinco se alinham lado a lado.]</span></p><p><span class="who">Felipe</span>: <span class="cut"><span class="cutlbl">Plano B · B5 (−6 s)</span>“Todo dia, comida boa vai pro lixo às oito da noite. Com o VenceHoje, o Seu Zé ganha, o Pedro economiza e o lixo passa fome.”</span> <span class="act">[Antônio faz cara de choro]</span></p><p><span class="who">Felipe</span> <span class="act">[olhando para a banca]</span>: “Banca, comida tem prazo de validade. Essa oportunidade também.” <span class="click">CLIQUE FINAL</span> <span class="act">(Lucas: a etiqueta vai a 0:00 e carimba “VENCE HOJE”)</span></p></div>
       </div><div class="step">
         <figure><img src="img/s9_1.jpg" alt=""><figcaption>Depois do clique 1</figcaption></figure>
         <div class="segs"><p><span class="who">TODOS</span> <span class="act">[apontando para a banca]</span>: “E ela vence hoje!”</p></div>
@@ -180,7 +183,7 @@ ol.pb li{margin:1.4mm 0}
 
 <section class="page">
   <h3>Plano B de tempo (se passar de 3:00)</h3>
-  <ol class="pb"><li>"É… hoje eu janto vento" vira só uma careta (−2 s).</li><li>Na pesquisa, tirar "e 67% pagariam por uma solução"; o número continua no S5 (−4 s).</li><li>Na receita, tirar a frase do Premium; ele continua no S7 (−5 s).</li><li>No TAM, tirar "Agora que fiquei sem comida, vamos falar de mercado" (−3 s).</li><li>Na conclusão, tirar a primeira frase do P5 e ir direto para "Banca, comida tem prazo de validade…" (−6 s).</li></ol>
+  <ol class="pb"><li><b>B1 · S2:</b> tirar "O Seu Zé perdeu dinheiro, o Pedro perdeu <span class="nw">60%</span> de desconto…" e ir direto para "e quem ganhou foi o lixo" (−4 s).</li><li><b>B2 · S5:</b> tirar "e <span class="nw">67%</span> pagariam por uma solução"; o número continua no slide (−3 s).</li><li><b>B3 · S7:</b> tirar a frase do Premium; ele continua no slide (−5 s).</li><li><b>B4 · S6:</b> tirar "Você paga sem saber o que vem" (−2 s).</li><li><b>B5 · S9:</b> tirar a primeira frase do Felipe e ir direto para "Banca, comida tem prazo de validade…" (−6 s). O Antônio faz a cara de choro mesmo assim.</li></ol>
 
   <h3>Números para ter na ponta da língua</h3>
   <div class="nums">
@@ -192,7 +195,7 @@ ol.pb li{margin:1.4mm 0}
     <div class="num"><b>R$ 79/mês</b><span>Plano Premium: destaque no app + relatórios de vendas</span></div>
     <div class="num"><b>R$ 125</b><span>ticket médio por loja/mês = R$ 135 mi ÷ 90 mil ÷ 12</span></div>
     <div class="num"><b>200 × 125 × 12</b><span>= R$ 300 mil/ano (conta do SOM)</span></div>
-    <div class="num"><b>Joinville</b><span>área inicial: padarias, hortifrútis, mercados de bairro</span></div>
+    <div class="num"><b>Joinville</b><span>área inicial: mercados de bairro, hortifrútis, padarias</span></div>
   </div>
   <p class="note">Pesquisa · lojistas: 80% perdem R$ 300 ou mais por mês · 67% pagariam por uma solução · 73% têm até 10 min por dia. Consumidores: 73% já compraram por desconto de validade · 82% decidem pelo preço · 53% nunca viram algo parecido. Não citar o número de entrevistados.</p>
 </section>
@@ -200,7 +203,7 @@ ol.pb li{margin:1.4mm 0}
 <section class="page">
   <h3>Perguntas prováveis da banca</h3>
   <table class="qa"><thead><tr><th>Pergunta</th><th>Resposta em uma frase</th></tr></thead><tbody>
-  <tr><td>"Se o pagamento é na loja, como vocês garantem a comissão?"</td><td>Cada reserva gera um QR Code; o lojista escaneia na retirada, o que confirma a venda e baixa o estoque, e no fim do mês recebe uma fatura (Pix ou boleto) só das retiradas confirmadas.</td></tr><tr><td>"E se o lojista não escanear o QR para não pagar?"</td><td>A reserva fica pendente: o estoque do app não baixa, a loja não recebe a avaliação do cliente e reservas sem confirmação geram alerta para a nossa equipe.</td></tr><tr><td>"Por que 15%?"</td><td>O lojista fica com 85% de uma venda que iria para o lixo, e a comissão é cobrada só quando ele vende, que é o que 47% dos lojistas pediram.</td></tr><tr><td>"E se o cliente passar mal? A imagem da loja não fica queimada?"</td><td>60% dos lojistas tiveram esse medo; por isso a validade fica sempre visível e o anúncio sai sozinho quando vence.</td></tr><tr><td>"O lojista vai ter tempo pra isso?"</td><td>73% têm até 10 minutos por dia, e publicar uma oferta leva segundos.</td></tr><tr><td>"Qual desconto faz o cliente ir até a loja?"</td><td>60% só vão com 30% ou mais e 67% andam até 10 minutos; o app prioriza ofertas próximas e com bom desconto.</td></tr><tr><td>"Por que não sacola surpresa, como a Food To Save?"</td><td>47% dos consumidores se preocupam com a qualidade; ver o produto exato e a validade passa mais confiança.</td></tr><tr><td>"E o SaveFood, que é parecido?"</td><td>Está em fase beta; nosso foco é o comércio de bairro, com publicação em segundos, reserva sem pagamento no app e remoção automática no vencimento como padrão.</td></tr><tr><td>"Como chegaram em R$ 300 mil no SOM?"</td><td>200 lojas × ticket médio de R$ 125/mês × 12 meses; o ticket é o mesmo do SAM (R$ 135 mi ÷ 90 mil lojas).</td></tr>
+  <tr><td>"Se o pagamento é na loja, como vocês garantem a comissão?"</td><td>Cada reserva gera um QR Code; o lojista escaneia na retirada, o que confirma a venda e baixa o estoque, e no fim do mês recebe uma fatura (Pix ou boleto) só das retiradas confirmadas.</td></tr><tr><td>"E se o lojista não escanear o QR para não pagar?"</td><td>A reserva fica pendente: o estoque do app não baixa, a loja não recebe a avaliação do cliente e reservas sem confirmação geram alerta para a nossa equipe.</td></tr><tr><td>"Por que <span class="nw">15%</span>?"</td><td>O lojista fica com <span class="nw">85%</span> de uma venda que iria para o lixo, e a comissão é cobrada só quando ele vende, que é o que <span class="nw">47%</span> dos lojistas pediram.</td></tr><tr><td>"E se o cliente passar mal? A imagem da loja não fica queimada?"</td><td><span class="nw">60%</span> dos lojistas tiveram esse medo; por isso a validade fica sempre visível e o anúncio sai sozinho quando vence.</td></tr><tr><td>"O lojista vai ter tempo pra isso?"</td><td><span class="nw">73%</span> têm até 10 minutos por dia, e publicar uma oferta leva segundos.</td></tr><tr><td>"Qual desconto faz o cliente ir até a loja?"</td><td><span class="nw">60%</span> só vão com <span class="nw">30%</span> ou mais e <span class="nw">67%</span> andam até 10 minutos; o app prioriza ofertas próximas e com bom desconto.</td></tr><tr><td>"Por que não sacola surpresa, como a Food To Save?"</td><td><span class="nw">47%</span> dos consumidores se preocupam com a qualidade; ver o produto exato e a validade passa mais confiança.</td></tr><tr><td>"E o SaveFood, que é parecido?"</td><td>Está em fase beta; nosso foco é o comércio de bairro, com publicação em segundos, reserva sem pagamento no app e remoção automática no vencimento como padrão.</td></tr><tr><td>"Como chegaram em <span class="nw">R$&nbsp;300</span> mil no SOM?"</td><td>200 lojas × ticket médio de <span class="nw">R$&nbsp;125</span>/mês × 12 meses; o ticket é o mesmo do SAM (<span class="nw">R$&nbsp;135</span> mi ÷ 90 mil lojas).</td></tr>
   </tbody></table>
   <p class="note">TAM é o faturamento do setor; SAM e SOM são receita potencial do VenceHoje (o rodapé do S8 deixa isso explícito).</p>
 </section>
